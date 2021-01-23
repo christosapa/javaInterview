@@ -25,7 +25,7 @@ public class UserController {
         UserModel user = userService.findUserByEmail(mail);
 
         model.addAttribute("userDetails", user);
-        return "pages/userHomePage";
+        return "templates/userHomePage";
     }
 
 }
