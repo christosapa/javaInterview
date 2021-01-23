@@ -9,6 +9,7 @@ public interface UserService {
 
     List<UserModel> getAllUsers();
     void deleteUserById(Long id);
+    UserModel findUserByEmail(String email);
     UserModel updateUser(UserModel userModel);
     UserModel createUser(UserForm userForm);
 }

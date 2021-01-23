@@ -8,11 +8,13 @@ import com.javaInterview.javaInterview.models.UserModel;
 import com.javaInterview.javaInterview.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Service
 public class UserServiceImpl implements UserService{
 
     @Autowired
@@ -36,6 +38,12 @@ public class UserServiceImpl implements UserService{
     @Override
     public void deleteUserById(Long id) {
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public UserModel findUserByEmail(String email) {
+        Optional<User> user = userRepository.findUserByEmail(email);
+        return userToUserModel.map(user.get());
     }
 
     @Override
